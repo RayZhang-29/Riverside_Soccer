@@ -1,0 +1,106 @@
+<mat-tab-group>
+  <mat-tab label="Cleat">
+    <button class="add-btn" (click)="openAddCleatDialog()">Add Cleat</button>
+    <div class="cleat-list">
+      <table>
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Brand</th>
+          <th>Category</th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>Color</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cleat of pagedCleats">
+            <td>{{ cleat.id }}</td>
+            <td>{{ cleat.name }}</td>
+            <td>{{ cleat.price }}</td>
+            <td>{{ cleat.brand }}</td>
+            <td>{{ cleat.category }}</td>
+            <td>{{ cleat.age }}</td>
+            <td>{{ cleat.gender }}</td>
+            <td>{{ cleat.color }}</td>
+            <td>
+<!--              <button>Update</button>-->
+              <button (click)="deleteCleat(cleat.id)">Delete</button>
+<!--              TODO:UPDATE-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="paginator-container">
+      <mat-paginator
+        class="paginator"
+        [length]="totalCleats"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="pageSizeOptions"
+        (page)="onCleatPageChange($event)"
+      ></mat-paginator>
+    </div>
+  </mat-tab>
+
+
+
+  <mat-tab label="Jersey">
+    <div class="jersey-list">
+      <button class="add-btn" (click)="openAddJerseyDialog()">Add Jersey</button>
+      <table>
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Brand</th>
+          <th>Club</th>
+          <th>Country</th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>Color</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let jersey of pagedJerseys">
+          <td>{{ jersey.id }}</td>
+          <td>{{ jersey.name }}</td>
+          <td>{{ jersey.price }}</td>
+          <td>{{ jersey.brand }}</td>
+          <td>{{ jersey.club }}</td>
+          <td>{{ jersey.country }}</td>
+          <td>{{ jersey.age }}</td>
+          <td>{{ jersey.gender }}</td>
+          <td>{{ jersey.color }}</td>
+          <td>
+<!--            <button >Update</button>-->
+            <button (click)="deleteJersey(jersey.id)">Delete</button>
+            <!--            (click)="deleteProduct(product.id)"-->
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="paginator-container">
+      <mat-paginator
+        class="paginator"
+        [length]="totalJerseys"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="pageSizeOptions"
+        (page)="onJerseyPageChange($event)"
+      ></mat-paginator>
+    </div>
+  </mat-tab>
+</mat-tab-group>
+
+
+
+
+

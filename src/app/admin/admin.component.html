@@ -1,0 +1,14 @@
+<div class="admin-page">
+  <mat-list class="vertical-tabs">
+    <div class="title">Seller Dashboard</div>
+    <div class="links">
+      <a mat-list-item [routerLink]="['./products-edit']" routerLinkActive="active">Edit Product</a>
+      <a mat-list-item [routerLink]="['./refund']" routerLinkActive="active">Refund</a>
+      <a mat-list-item [routerLink]="['./visualization']" routerLinkActive="active">Orders Visualization</a>
+    </div>
+  </mat-list>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+

@@ -1,0 +1,101 @@
+<div class="main-container">
+  <div class="cleat-filter-container">
+    <p>Price</p>
+    <ng5-slider class="price-filter" [(value)]="minValue" [(highValue)]="maxValue" [options]="sliderOptions" (userChangeEnd)="onSliderChange()"></ng5-slider>
+    <app-cleat-filter (filterChangeEmitter)="onFilterChange($event)"></app-cleat-filter>
+  </div>
+
+  <div class="cleat-filter-right">
+    <div class="cleat-list-container">
+      <div class="cleat-list">
+        <mat-card *ngFor="let cleat of pagedCleats" class="cleat">
+          <a *ngIf="cleat" [routerLink]="['/api/products/cleat-detail', cleat.id]">
+            <img [src]="cleat.image" alt="{{ cleat.name }}" class="cleat-image">
+            <!-- (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()"-->
+          </a>
+          <mat-card-content>
+            <a *ngIf="cleat" [routerLink]="['/api/products/cleat-detail', cleat.id]">
+              <h3>{{ cleat.name }}</h3>
+            </a>
+            <p>{{ cleat.brand }}</p>
+            <p>$ {{ cleat.price }}</p>
+            <div class="cd-cart-button-container">
+              <button class="btn add-btn" *ngIf="cleat" [routerLink]="['/api/products/cleat-detail', cleat.id]">SELECT OPTIONS</button>
+            </div>
+
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+    <div class="paginator-container">
+      <mat-paginator
+        class="paginator"
+        [length]="totalProducts"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="pageSizeOptions"
+        (page)="onPageChange($event)"
+      ></mat-paginator>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+<!--<div class="main-container">-->
+<!--  <div class="cleat-filter-container">-->
+<!--    <p>Price</p>-->
+<!--    <ng5-slider class="price-filter" [(value)]="minValue" [(highValue)]="maxValue" [options]="sliderOptions" (userChangeEnd)="onSliderChange()"></ng5-slider>-->
+<!--    <app-cleat-filter (filterChangeEmitter)="onFilterChange($event)"></app-cleat-filter>-->
+<!--  </div>-->
+
+<!--  <div class="cleat-filter-right">-->
+<!--    <div class="cleat-list">-->
+<!--      <mat-card *ngFor="let cleat of pagedCleats" class="cleat">-->
+<!--        <a *ngIf="cleat" [routerLink]="['/products/cleat-detail', cleat.id]">-->
+<!--          <img [src]="cleat.image" alt="{{ cleat.name }}" class="cleat-image">-->
+<!--          &lt;!&ndash;        (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()"&ndash;&gt;-->
+<!--        </a>-->
+<!--        <mat-card-content>-->
+<!--          <a *ngIf="cleat" [routerLink]="['/products/cleat-detail', cleat.id]">-->
+<!--            <h3>{{ cleat.name }}</h3>-->
+<!--          </a>-->
+<!--          <p>{{ cleat.brand }}</p>-->
+<!--          <p>$ {{ cleat.price }}</p>-->
+
+<!--          <div class="cd-cart-button-container">-->
+<!--            <button class="btn add-btn" *ngIf="cleat" [routerLink]="['/products/cleat-detail', cleat.id]">SELECT OPTIONS</button>-->
+<!--          </div>-->
+<!--        </mat-card-content>-->
+<!--      </mat-card>-->
+<!--    </div>-->
+<!--    <div class="paginator-container">-->
+<!--      <mat-paginator-->
+<!--        class="paginator"-->
+<!--        [length]="totalProducts"-->
+<!--        [pageSize]="pageSize"-->
+<!--        [pageSizeOptions]="pageSizeOptions"-->
+<!--        (page)="onPageChange($event)"-->
+<!--      ></mat-paginator>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--</div>-->
+
+
+<!--        <ng-container *ngIf="showSelectOptions">-->
+<!--          <div class="select-options" *ngIf="showSelectOptions && !showSizeSelector">-->
+<!--            <button mat-button (click)="onSelectOptionClick()">Select Options</button>-->
+<!--          </div>-->
+
+<!--          <div class="size-selector" *ngIf="showSizeSelector">-->
+<!--            <mat-form-field>-->
+<!--              <mat-label>Select Size</mat-label>-->
+<!--              <mat-select [(value)]="selectedSize">-->
+<!--                <mat-option *ngFor="let size of jersey.size" [value]="size">{{size}}</mat-option>-->
+<!--              </mat-select>-->
+<!--            </mat-form-field>-->
+<!--            <button mat-button color="primary" [disabled]="!selectedSize" (click)="addToCart(jersey.id, 1)">Add to Cart</button>-->
+<!--          </div>-->
+<!--        </ng-container>-->

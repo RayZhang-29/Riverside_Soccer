@@ -1,0 +1,114 @@
+<mat-tab-group>
+  <mat-tab label="Orders">
+    <table class="orders-table">
+      <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>User ID</th>
+        <th>Order Content</th>
+        <th>Username</th>
+        <th>Date</th>
+        <th>Total Price</th>
+      </tr>
+      </thead>
+      <tbody>
+      <ng-container *ngFor="let order of pagedOrders">
+        <tr *ngFor="let product of order.products; let i = index">
+          <td *ngIf="i === 0" [rowSpan]="order.products.length">{{ order.orderNumber }}</td>
+          <td *ngIf="i === 0" [rowSpan]="order.products.length">{{ order.userId }}</td>
+          <td class="product-name">{{ product.product.name }}</td>
+          <td *ngIf="i === 0" [rowSpan]="order.products.length">{{ order.personalInfo.name }}</td>
+          <td *ngIf="i === 0" [rowSpan]="order.products.length">{{ order.date | date }}</td>
+          <td *ngIf="i === 0" [rowSpan]="order.products.length">{{ order.totalPrice | currency }}</td>
+        </tr>
+      </ng-container>
+      </tbody>
+    </table>
+    <div class="paginator-container">
+      <mat-paginator
+        class="paginator"
+        [length]="totalOrders"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="pageSizeOptions"
+        (page)="onPageChange($event)"
+      ></mat-paginator>
+    </div>
+  </mat-tab>
+  <mat-tab label="Top Selling">
+    <div class="top-selling">
+      <div>
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" [(ngModel)]="startDate">
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" [(ngModel)]="endDate">
+        <button (click)="updateTopSellingProducts(startDate, endDate)">Update</button>
+      </div>
+
+      <div style="display: block;">
+        <canvas baseChart
+                [data]="{ datasets: topSellingProductsChartData, labels: topSellingProductsChartLabels }"
+                [options]="topSellingProductsChartOptions"
+                [type]="'bar'"
+        ></canvas>
+      </div>
+    </div>
+  </mat-tab>
+</mat-tab-group>
+
+
+<!--        <canvas baseChart-->
+<!--                [datasets]="topSellingProductsChartData"-->
+<!--                [labels]="topSellingProductsChartLabels"-->
+<!--                [options]="topSellingProductsChartOptions"-->
+<!--                chartType="bar"-->
+<!--                [legend]="topSellingProductsChartLegend">-->
+<!--        </canvas>-->
+
+<!--        <tr *ngFor="let cleat of cleats">-->
+<!--          <td>{{ cleat.id }}</td>-->
+<!--          <td>{{ cleat.name }}</td>-->
+<!--          <td>{{ cleat.price }}</td>-->
+<!--          <td>{{ cleat.size }}</td>-->
+<!--          <td>{{ cleat.brand }}</td>-->
+<!--          <td>{{ cleat.category }}</td>-->
+<!--          <td>{{ cleat.age }}</td>-->
+<!--          <td>{{ cleat.gender }}</td>-->
+<!--          <td>-->
+<!--            <button >Edit</button>-->
+<!--            &lt;!&ndash;            (click)="selectedProduct = product"&ndash;&gt;-->
+<!--            <button >Delete</button>-->
+<!--            &lt;!&ndash;            (click)="deleteProduct(product.id)"&ndash;&gt;-->
+<!--          </td>-->
+<!--        </tr>-->
+
+
+
+
+
+
+<!--<div class="cleat-list">-->
+<!--  <table>-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--      <th>Order ID</th>-->
+<!--      <th>User</th>-->
+<!--      <th>Order Content</th>-->
+<!--      <th>Price</th>-->
+<!--      <th>Purchase Date</th>-->
+<!--      <th>Status</th>-->
+<!--      <th>Actions</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--    <tr>-->
+<!--      <td>1</td>-->
+<!--      <td>2</td>-->
+<!--      <td>3</td>-->
+<!--      <td>4</td>-->
+<!--      <td>5</td>-->
+<!--      <td>6</td>-->
+<!--      <td>7</td>-->
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--  </table>-->
+<!--</div>-->

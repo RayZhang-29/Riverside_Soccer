@@ -1,0 +1,81 @@
+.container {
+  margin-top: 10vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.shipping-info,
+.payment-info {
+  display: flex;
+  flex-direction: row;
+}
+
+.confirm-left {
+  margin-left: 10vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.confirm-right {
+  display: flex;
+  flex-direction: column;
+  margin-left: 8vw;
+}
+
+.edit {
+  height: 3vh;
+  margin-top: 1vh;
+  margin-left: 5vw;
+}
+
+.btn-purchase {
+  margin-left: 2vw;
+}
+
+.items-summary {
+  overflow-y: auto;
+  width: 40vw;
+  height: 50vh;
+}
+
+.items-total {
+  margin-top: 2vh;
+  font-size: 3vh;
+  text-align: right;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  .item-img {
+    width: 8vw;
+    height: 16vh;
+    margin-bottom: 2vh;
+  }
+  .item-details {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1vw;
+    margin-top: 2vh;
+    .item-details-up {
+      display: flex;
+      flex-direction: row;
+      text-align: left;
+      font-size: 3.5vh;
+      font-weight: 500;
+      line-height: 4vh;
+    }
+    .item-detail-bottom {
+      margin-top: 2vh;
+      display: flex;
+      flex-direction: row;
+      text-align: left;
+      font-weight: 400;
+      font-size:2.5vh;
+      .item-amount,
+      .item-size {
+        margin-right: 5vw;
+      }
+    }
+  }
+}

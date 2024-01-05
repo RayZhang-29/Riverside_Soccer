@@ -1,0 +1,41 @@
+<div class="container">
+  <h2>Payment Information</h2>
+  <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()" #paymentFormRef="ngForm">
+    <div class="form-group">
+      <label for="cardNumber">Card Number</label>
+      <input type="text" class="form-control" id="cardNumber" placeholder="Enter any card number" formControlName="cardNumber">
+      <div class="invalid-feedback" *ngIf="paymentForm.get('cardNumber')?.getError('required') && (paymentForm.controls['cardNumber'].dirty || paymentForm.controls['cardNumber'].touched)">
+        card number is required.
+      </div>
+
+      <label for="cardOwner">Card Owner</label>
+      <input type="text" class="form-control" id="cardOwner" placeholder="Enter any card owner" formControlName="cardOwner">
+      <div class="invalid-feedback" *ngIf="paymentForm.get('cardOwner')?.getError('required') && (paymentForm.controls['cardOwner'].dirty || paymentForm.controls['cardOwner'].touched)">
+        card owner is required.
+      </div>
+
+      <label for="expiryMonth">Expiry Month</label>
+      <select class="form-control" id="expiryMonth" formControlName="expiryMonth">
+        <option value="" disabled selected>Select a month</option>
+        <option *ngFor="let month of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]" [value]="month">{{month}}</option>
+      </select>
+
+      <label for="expiryYear">Expiry Year</label>
+      <select class="form-control" id="expiryYear" formControlName="expiryYear">
+        <option value="" disabled selected>Select a year</option>
+        <option *ngFor="let year of (currentYear() | timeRange: (currentYear() + 10))" [value]="year">{{year}}</option>
+      </select>
+
+      <label for="CCV">CCV</label>
+      <input type="text" class="form-control" id="CCV" placeholder="Enter any CCV" formControlName="CCV">
+      <div class="invalid-feedback" *ngIf="paymentForm.get('CCV')?.getError('required') && (paymentForm.controls['CCV'].dirty || paymentForm.controls['CCV'].touched)">
+        CCV is required.
+      </div>
+    </div>
+
+    <div class="button-container">
+      <button type="button" class="btn btn-secondary" (click)="onBack()">Back</button>
+      <button type="submit" class="btn btn-primary" [disabled]="paymentForm.invalid">Continue</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,43 @@
+//.account-page {
+//  display: flex;
+//  flex-direction: row;
+//}
+
+.account-page {
+  display: flex;
+}
+
+.title {
+  border: none;
+  font-size: 3vh;
+  font-weight: bold;
+  margin-left: 2vw;
+  margin-bottom: 4vh;
+}
+
+.links {
+
+}
+
+.vertical-tabs {
+  min-width: 200px;
+  margin-left: 10vw;
+  margin-top: 15vh;
+
+}
+
+a {
+  cursor: pointer;
+}
+
+a.active {
+  background-color: #f5ca57;
+  font-weight: bold;
+  border-radius: 1vh;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 16px;
+  color: #000000;
+}

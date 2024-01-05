@@ -1,0 +1,16 @@
+<div>
+  <app-carousel [slides]="slides"></app-carousel>
+  <div class="new-products">
+    <p>New Products</p>
+    <mat-grid-list cols="3" gutterSize="16px" rowHeight="1:1">
+      <mat-grid-tile *ngFor="let product of newProducts">
+        <div class="product-card">
+          <img [src]="product.image" alt="{{ product.name }}" class="product-image">
+          <h3 class="product-name">{{ product.name }}</h3>
+          <p class="product-price">{{ product.price | currency }}</p>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+  </div>
+</div>

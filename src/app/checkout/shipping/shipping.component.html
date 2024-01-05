@@ -1,0 +1,92 @@
+<div class="container">
+  <h2>Shipping Address</h2>
+  <form [formGroup]="shippingForm" (ngSubmit)="onSubmit()" #shippingFormRef="ngForm">
+    <div class="form-group">
+      <label for="shippingCountry">Country</label>
+      <input type="text" class="form-control" id="shippingCountry" placeholder="Enter country" formControlName="country">
+      <div class="invalid-feedback" *ngIf="shippingForm.get('country')?.getError('required') && (shippingForm.controls['country'].dirty || shippingForm.controls['country'].touched)">
+        shipping country is required.
+      </div>
+
+      <label for="shippingCity">City</label>
+      <input type="text" class="form-control" id="shippingCity" placeholder="Enter city" formControlName="city">
+      <div class="invalid-feedback" *ngIf="shippingForm.get('city')?.getError('required') && (shippingForm.controls['city'].dirty || shippingForm.controls['city'].touched)">
+        shipping city is required.
+      </div>
+
+      <label for="shippingState">State</label>
+      <input type="text" class="form-control" id="shippingState" placeholder="Enter state" formControlName="state">
+      <div class="invalid-feedback" *ngIf="shippingForm.get('state')?.getError('required') && (shippingForm.controls['state'].dirty || shippingForm.controls['state'].touched)">
+        shipping state is required.
+      </div>
+
+      <label for="shippingZip">Zip</label>
+      <input type="text" class="form-control" id="shippingZip" placeholder="Enter zip code" formControlName="zip">
+      <div class="invalid-feedback" *ngIf="shippingForm.get('zip')?.getError('required') && (shippingForm.controls['zip'].dirty || shippingForm.controls['zip'].touched)">
+        shipping zip is required.
+      </div>
+
+      <label for="shippingAddress">Address</label>
+      <textarea class="form-control" id="shippingAddress" rows="3" placeholder="Enter address" formControlName="address"></textarea>
+      <div class="invalid-feedback" *ngIf="shippingForm.get('address')?.getError('required') && (shippingForm.controls['address'].dirty || shippingForm.controls['address'].touched)">
+        shipping address is required.
+      </div>
+    </div>
+
+    <div *ngIf="!sameAsShippingAddress">
+      <h2>Billing Address</h2>
+      <form [formGroup]="billingForm" #billingFormRef="ngForm">
+        <div class="form-group billing">
+          <label for="billingCountry">Country</label>
+          <input type="text" class="form-control" id="billingCountry" placeholder="Enter country" formControlName="country">
+          <div class="invalid-feedback" *ngIf="billingForm.get('country')?.getError('required') && (billingForm.controls['country'].dirty || billingForm.controls['country'].touched)">
+            billing country is required.
+          </div>
+
+          <label for="billingCity">City</label>
+          <input type="text" class="form-control" id="billingCity" placeholder="Enter city" formControlName="city">
+          <div class="invalid-feedback" *ngIf="billingForm.get('city')?.getError('required') && (billingForm.controls['city'].dirty || billingForm.controls['city'].touched)">
+            billing city is required.
+          </div>
+
+          <label for="billingState">State</label>
+          <input type="text" class="form-control" id="billingState" placeholder="Enter state" formControlName="state">
+          <div class="invalid-feedback" *ngIf="billingForm.get('state')?.getError('required') && (billingForm.controls['state'].dirty || billingForm.controls['state'].touched)">
+            billing state is required.
+          </div>
+
+          <label for="billingZip">Zip</label>
+          <input type="text" class="form-control" id="billingZip" placeholder="Enter zip code" formControlName="zip">
+          <div class="invalid-feedback" *ngIf="billingForm.get('zip')?.getError('required') && (billingForm.controls['zip'].dirty || billingForm.controls['zip'].touched)">
+            billing zip is required.
+          </div>
+
+          <label for="billingAddress">Address</label>
+          <textarea class="form-control" id="billingAddress" rows="3" placeholder="Enter address" formControlName="address"></textarea>
+          <div class="invalid-feedback" *ngIf="billingForm.get('address')?.getError('required') && (billingForm.controls['address'].dirty || billingForm.controls['address'].touched)">
+            billing address is required.
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="form-check">
+      <input class="form-check-input" type="radio" id="sameAddress" name="addressOption" value="same" (change)="onAddressOptionChange(true)" checked>
+      <label class="form-check-label" for="sameAddress">
+        Billing address is the same as shipping address
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" id="differentAddress" name="addressOption" value="different" (change)="onAddressOptionChange(false)">
+      <label class="form-check-label" for="differentAddress">
+        Billing address is different from shipping address
+      </label>
+    </div>
+
+    <div class="button-container">
+      <button type="button" class="btn btn-secondary" (click)="onBack()">Back</button>
+      <button type="submit" class="btn btn-primary" [disabled]="shippingForm.invalid || (!sameAsShippingAddress && billingForm.invalid)">Continue</button>
+    </div>
+
+  </form>
+</div>

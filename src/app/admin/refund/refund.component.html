@@ -1,0 +1,34 @@
+<div class="refund">
+  <table>
+    <thead class="header">
+    <tr class="refund-header">
+      <th>Refund ID</th>
+      <th>Order ID</th>
+      <th>User ID</th>
+      <th>User Name</th>
+      <th>Product ID</th>
+      <th>Product Name</th>
+      <th>Refund Time</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody class="table-content">
+    <tr *ngFor="let refund of refunds" class="refund-body">
+      <td>{{ refund.refund.id }}</td>
+      <td>{{ refund.refund.orderId }}</td>
+      <td>{{ refund.refund.userId }}</td>
+      <td>{{ refund.username }}</td>
+      <td>{{ refund.refund.productId }}</td>
+      <td>{{ refund.productName }}</td>
+      <td>{{ refund.refund.refundTime | date: 'medium' }}</td>
+      <td>{{ refund.refund.status }}</td>
+      <td>
+        <button *ngIf="refund.refund.status === 'processing'" (click)="approveRefund(refund.refund.id)">Approve</button>
+        <button *ngIf="refund.refund.status === 'processing'" (click)="refuseRefund(refund.refund.id)">Refuse</button>
+        <button *ngIf="refund.refund.status !== 'processing'" disabled>Processed</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

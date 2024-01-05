@@ -1,0 +1,99 @@
+<div class="jersey-filter-container">
+  <mat-form-field>
+    <mat-label>Club</mat-label>
+    <mat-select multiple [(value)]="selectedClub" (selectionChange)="emitFilterChange()">
+      <mat-select-trigger>
+        {{selectedClub[0] || ''}}
+        <span *ngIf="(selectedClub.length || 0) > 1" class="example-additional-selection">
+          (+{{(selectedClub.length || 0) - 1}} {{selectedClub.length === 2 ? 'other' : 'others'}})
+        </span>
+      </mat-select-trigger>
+      <mat-option *ngFor="let club of clubs" [value]="club">{{ club }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Country</mat-label>
+    <mat-select multiple [(value)]="selectedCountry" (selectionChange)="emitFilterChange()">
+      <mat-select-trigger>
+        {{selectedCountry[0] || ''}}
+        <span *ngIf="(selectedCountry.length || 0) > 1" class="example-additional-selection">
+        (+{{(selectedCountry.length || 0) - 1}} {{selectedCountry.length === 2 ? 'other' : 'others'}})
+      </span>
+      </mat-select-trigger>
+      <mat-option *ngFor="let country of countries" [value]="country">{{ country }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Brand</mat-label>
+    <mat-select multiple [(value)]="selectedBrand" (selectionChange)="emitFilterChange()">
+      <mat-select-trigger>
+        {{selectedBrand[0] || ''}}
+        <span *ngIf="(selectedBrand.length || 0) > 1" class="example-additional-selection">
+        (+{{(selectedBrand.length || 0) - 1}} {{selectedBrand.length === 2 ? 'other' : 'others'}})
+      </span>
+      </mat-select-trigger>
+      <mat-option *ngFor="let brand of brands" [value]="brand">{{ brand }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Age</mat-label>
+    <mat-select [(value)]="selectedAge" (selectionChange)="emitFilterChange()">
+      <mat-select-trigger>
+        {{selectedAge}}
+      </mat-select-trigger>
+      <mat-option *ngFor="let age of ages" [value]="age">{{ age }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+  <mat-form-field>
+    <mat-label>Gender</mat-label>
+    <mat-select [(value)]="selectedGender" (selectionChange)="emitFilterChange()">
+      <mat-select-trigger>
+        {{selectedGender}}
+      </mat-select-trigger>
+      <mat-option *ngFor="let gender of genders" [value]="gender">{{ gender }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+  <mat-form-field>
+    <mat-label>Color</mat-label>
+    <mat-select multiple [(value)]="selectedColor" (selectionChange)="emitFilterChange()">
+      <mat-select-trigger>
+        {{selectedColor[0] || ''}}
+        <span *ngIf="(selectedColor.length || 0) > 1" class="example-additional-selection">
+        (+{{(selectedColor.length || 0) - 1}} {{selectedColor.length === 2 ? 'other' : 'others'}})
+      </span>
+      </mat-select-trigger>
+      <mat-option *ngFor="let color of colors" [value]="color">{{ color }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</div>
+
+
+<!--  <mat-form-field>-->
+<!--    <mat-label>Size</mat-label>-->
+<!--    <mat-select [(value)]="selectedSize" (selectionChange)="emitFilterChange()">-->
+<!--      <mat-select-trigger>-->
+<!--        {{selectedSize}}-->
+<!--      </mat-select-trigger>-->
+<!--      <mat-option *ngFor="let size of sizes" [value]="size">{{ size }}</mat-option>-->
+<!--    </mat-select>-->
+<!--  </mat-form-field>-->
+
+
+<!--    <mat-label>Price</mat-label>-->
+<!--    <mat-select multiple [(value)]="selectedSize" (selectionChange)="emitFilterChange()">-->
+<!--      <mat-select-trigger>-->
+<!--        {{selectedSize[0] || ''}}-->
+<!--        <span *ngIf="(selectedSize.length || 0) > 1" class="example-additional-selection">-->
+<!--        (+{{(selectedSize.length || 0) - 1}} {{selectedSize.length === 2 ? 'other' : 'others'}})-->
+<!--      </span>-->
+<!--      </mat-select-trigger>-->
+<!--      <mat-option *ngFor="let size of sizes" [value]="size">{{ size }}</mat-option>-->
+<!--    </mat-select>-->

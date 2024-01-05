@@ -1,0 +1,19 @@
+<div class="dialog-container">
+  <h2 mat-dialog-title>Add Comment</h2>
+  <form [formGroup]="ratingFrom">
+    <div class="item-rating" (mouseleave)="resetStars()">
+      <mat-icon *ngFor="let star of [1, 2, 3, 4, 5]; let i = index"
+                [class.filled]="i < selectedRating || i < highlightedStar"
+                (click)="onRate(star)"
+                (mouseover)="highlightStar(star)">
+        star
+      </mat-icon>
+    </div>
+    <textarea formControlName="contents" matInput placeholder="Your comment" rows="5" cdkTextareaAutosize></textarea>
+    <div class="submit-btn">
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button mat-button [mat-dialog-close]="getFormValue()">Submit</button>
+    </div>
+  </form>
+</div>
+

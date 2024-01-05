@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-sm">
+<!--  href="#"-->
+  <a class="navbar-brand title" routerLink="/api/home">{{title}}</a>
+  <button class="navbar-toggler" type="button">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+
+    <ul class="navbar-nav login-signup">
+      <li class="nav-item login" *ngIf="!(isLoggedIn$ | async); else logoutTemplate">
+        <a class="nav-link" routerLinkActive="active" routerLink="/api/auth/login">Login</a>
+      </li>
+      <li class="nav-item register" *ngIf="!(isLoggedIn$ | async)">
+        <a class="nav-link" routerLinkActive="active" routerLink="/api/auth/signup">Register</a>
+      </li>
+      <ng-template #logoutTemplate>
+        <li class="nav-item logout">
+          <a class="nav-link" routerLinkActive="active" (click)="logout()">Logout</a>
+        </li>
+      </ng-template>
+    </ul>
+
+    <div class="navbar-nav cart-wishlist">
+      <div class="wishlist-icon" (click)="toggleWishlist()">
+        <span class="material-icons">favorite_border</span>
+      </div>
+      <div routerLink="/api/cart">
+        <span class="material-icons shopping">shopping_cart_border</span>
+      </div>
+      <div class="account" *ngIf="(isLoggedIn$ | async)" [matMenuTriggerFor]="accountMenu">
+        <span class="material-icons">account_circle</span>
+      </div>
+      <mat-menu #accountMenu="matMenu">
+        <button mat-menu-item routerLink="/api/account/user-info">User Info</button>
+        <button mat-menu-item routerLink="/api/account/address">Address</button>
+        <button mat-menu-item routerLink="/api/account/orders">Orders</button>
+        <button mat-menu-item routerLink="/api/admin/products-edit" *ngIf="isAdmin">Admin Dashboard</button>
+      </mat-menu>
+      <app-wishlist *ngIf="showWishlist"></app-wishlist>
+    </div>
+  </div>
+</nav>

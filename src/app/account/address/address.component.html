@@ -1,0 +1,49 @@
+<div class="container">
+  <h2 class="title">Shipping Address</h2>
+  <div class="shipping-info">
+<!--    TODO: SHOW ALL ADDRESS-->
+    <div>Country: {{ address?.country }}</div>
+    <div>City: {{ address?.city }}</div>
+    <div>State: {{ address?.state }}</div>
+    <div>Zip: {{ address?.zip }}</div>
+    <div>Address: {{ address?.address }}</div>
+  </div>
+
+  <form [formGroup]="addressForm" (ngSubmit)="updateAddress()">
+    <div class="form-group">
+      <div class="title">Update</div>
+      <label for="country">Country</label>
+      <input type="text" class="form-control" id="country" placeholder="Enter country" formControlName="country">
+      <div class="invalid-feedback" *ngIf="addressForm.get('country')?.getError('required') && (addressForm.controls['country'].dirty || addressForm.controls['country'].touched)">
+        shipping country is required.
+      </div>
+
+      <label for="city">City</label>
+      <input type="text" class="form-control" id="city" placeholder="Enter city" formControlName="city">
+      <div class="invalid-feedback" *ngIf="addressForm.get('city')?.getError('required') && (addressForm.controls['city'].dirty || addressForm.controls['city'].touched)">
+        shipping city is required.
+      </div>
+
+      <label for="state">State</label>
+      <input type="text" class="form-control" id="state" placeholder="Enter state" formControlName="state">
+      <div class="invalid-feedback" *ngIf="addressForm.get('state')?.getError('required') && (addressForm.controls['state'].dirty || addressForm.controls['state'].touched)">
+        shipping state is required.
+      </div>
+
+      <label for="zip">Zip</label>
+      <input type="text" class="form-control" id="zip" placeholder="Enter zip code" formControlName="zip">
+      <div class="invalid-feedback" *ngIf="addressForm.get('zip')?.getError('required') && (addressForm.controls['zip'].dirty || addressForm.controls['zip'].touched)">
+        shipping zip is required.
+      </div>
+
+      <label for="address">Address</label>
+      <textarea class="form-control" id="address" rows="3" placeholder="Enter address" formControlName="address"></textarea>
+      <div class="invalid-feedback" *ngIf="addressForm.get('address')?.getError('required') && (addressForm.controls['address'].dirty || addressForm.controls['address'].touched)">
+        shipping address is required.
+      </div>
+    </div>
+
+    <button mat-raised-button color="primary" type="submit">Update</button>
+
+  </form>
+</div>

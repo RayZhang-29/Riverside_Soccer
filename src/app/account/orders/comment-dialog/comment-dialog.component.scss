@@ -1,0 +1,33 @@
+.dialog-container {
+  width: 40vw;
+  height: 40vh;
+  text-align: center;
+}
+
+.item-rating {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 2vh;
+  margin-top: -2vh;
+  margin-left: 4vw;
+}
+
+.filled {
+  color: gold;
+}
+
+mat-icon {
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.38);
+}
+
+textarea {
+  width: 80%;
+  height: 60%;
+  overflow-y: scroll;
+}
+
+.submit-btn {
+  text-align: right;
+  margin-right: 4vw;
+}

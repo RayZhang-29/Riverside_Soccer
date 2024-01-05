@@ -1,0 +1,23 @@
+.container {
+  margin-left: 20vw;
+  margin-top: 10vh;
+}
+
+.button-container {
+  display: flex;
+  //justify-content: space-between;
+  margin-top: 20px;
+  .btn {
+    width: 10vw;
+    margin-right: 2vw;
+  }
+}
+
+.form-control {
+  width: 30vw;
+}
+
+//
+//input {
+//  width: 50vw;
+//}

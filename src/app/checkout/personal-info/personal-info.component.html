@@ -1,0 +1,22 @@
+<div class="container">
+  <h2>Personal Information</h2>
+  <form [formGroup]="personalInfoForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" placeholder="Enter your name" formControlName="name" [ngClass]="{'is-invalid': personalInfoForm.controls['name'].invalid && (personalInfoForm.controls['name'].dirty || personalInfoForm.controls['name'].touched)}">
+      <div class="invalid-feedback" *ngIf="personalInfoForm.get('name')?.getError('required') && (personalInfoForm.controls['name'].dirty || personalInfoForm.controls['name'].touched)">
+        Name is required.
+      </div>
+
+      <label for="phoneNumber">Phone Number</label>
+      <input type="text" class="form-control" id="phoneNumber" placeholder="Enter your phone number" formControlName="phoneNumber" [maxlength]="12" [ngClass]="{'is-invalid': personalInfoForm.controls['phoneNumber'].invalid && (personalInfoForm.controls['phoneNumber'].dirty || personalInfoForm.controls['phoneNumber'].touched )}">
+      <div class="invalid-feedback" *ngIf="personalInfoForm.controls['phoneNumber'].invalid && (personalInfoForm.controls['phoneNumber'].dirty || personalInfoForm.controls['phoneNumber'].touched)">
+        Phone number is required.
+      </div>
+      <div class="button-container">
+        <button type="button" class="btn btn-secondary" (click)="onBack()">Back</button>
+        <button type="submit" class="btn btn-primary" [disabled]="personalInfoForm.invalid">Continue</button>
+      </div>
+    </div>
+  </form>
+</div>

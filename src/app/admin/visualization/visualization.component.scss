@@ -1,0 +1,83 @@
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.orders-table th,
+.orders-table td {
+  border: 1px solid #ccc;
+  text-align: left;
+  padding: 8px;
+}
+
+.orders-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.product-name {
+  text-align: left;
+}
+
+//.orders-table tr:nth-child(even) {
+//  background-color: #f2f2f2;
+//}
+
+.paginator-container {
+  display: flex;
+  justify-content: center;
+}
+
+.paginator {
+  margin-top: 20px;
+}
+
+#startDate {
+  margin-right: 3vw;
+}
+
+
+mat-tab-group {
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+/* Style the tab labels */
+.mat-tab-label {
+  font-size: 18px;
+  font-weight: bold;
+  color: #555;
+  padding: 16px;
+  text-transform: none;
+}
+
+/* Change the color of the tab labels on hover */
+.mat-tab-label:hover {
+  color: #333;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Change the color of the active tab label */
+.mat-tab-label.mat-tab-label-active {
+  color: #1976d2;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Customize the ink bar */
+.mat-ink-bar {
+  background-color: #1976d2;
+  height: 4px;
+  border-radius: 2px;
+}
+
+/* Add some padding around the tab content */
+.mat-tab-body-content {
+  padding: 24px;
+}
+
+
+//#startDate {
+//  margin-right: 3vw;
+//}

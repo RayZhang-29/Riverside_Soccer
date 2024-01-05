@@ -1,0 +1,22 @@
+<div class="wishlist-dialog">
+  <div class="material-icons close" (click)="closeDialog()">close</div>
+  <h1>Wishlist</h1>
+  <div class="remove-all-container" (click)="removeAll()">
+    <div class="material-icons delete">delete</div>
+    <div class="remove-all">REMOVE ALL</div>
+  </div>
+  <div class="wishlist-list">
+    <mat-card *ngFor="let product of wishlist" class="product">
+      <a *ngIf="product" routerLink="product.type === 'jersey' ? ['/products/jersey-detail', product.id] : ['/products/cleat-detail', product.id]" (click)="closeDialog()">
+        <img [src]="product.image" alt="{{ product.name }}" class="product-image">
+      </a>
+      <mat-card-content>
+        <a *ngIf="product" routerLink="product.type === 'jersey' ? ['/products/jersey-detail', product.id] : ['/products/cleat-detail', product.id]" (click)="closeDialog()">
+          <h3>{{ product.name }}</h3>
+        </a>
+        <p class="price">${{ product.price }}</p>
+        <div class="remove-item" (click)="removeFromWishlist(product)">remove</div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,4 @@
+<div class="star-rating">
+  <rating [(ngModel)]="rate" [max]="max" [readonly]="readonly" (onHover)="onHover($event)" (onLeave)="onLeave($event)"></rating>
+  <span class="rate"> Rating: {{rate}}</span>
+</div>

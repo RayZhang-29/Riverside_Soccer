@@ -1,0 +1,49 @@
+<mat-card class="user-info-card">
+  <mat-card-title class="title">User Information</mat-card-title>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item>
+        <h4 matLine>Name: {{ userInfo?.name }}</h4>
+      </mat-list-item>
+      <mat-list-item>
+        <h4 matLine>Phone: {{ userInfo?.phoneNumber }}</h4>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
+
+<form [formGroup]="userInfoForm" (ngSubmit)="updateUserInfo()" class="update-form">
+  <div class="title">Update</div>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Phone Number</mat-label>
+    <input matInput formControlName="phoneNumber" />
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">Update</button>
+</form>
+
+
+<!--<div class="user-info">-->
+<!--  <div class="title">User Information</div>-->
+<!--  <div>Name: {{ userInfo?.name }}</div>-->
+<!--  <div>Phone: {{ userInfo?.phoneNumber }}</div>-->
+<!--</div>-->
+
+<!--<form [formGroup]="userInfoForm" (ngSubmit)="updateUserInfo()">-->
+<!--  <div class="title">Update</div>-->
+
+<!--  <mat-form-field appearance="fill">-->
+<!--    <mat-label>Phone Number</mat-label>-->
+<!--    <input matInput formControlName="phoneNumber" />-->
+<!--  </mat-form-field>-->
+
+<!--  <button mat-raised-button color="primary" type="submit">Update</button>-->
+<!--</form>-->
+
+
+
+<!--  <mat-form-field appearance="fill">-->
+<!--    <mat-label>Name</mat-label>-->
+<!--    <input matInput formControlName="name" />-->
+<!--  </mat-form-field>-->

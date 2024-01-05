@@ -1,0 +1,74 @@
+<!-- account/history-orders/history-orders.component.html -->
+<div class="orders-container">
+  <mat-card *ngFor="let order of orders">
+    <mat-card-header>
+      <mat-card-title>
+<!--        | date: 'mediumDate'-->
+        Order #{{ order.orderNumber }} - {{ order.date | date: 'short' }} - {{ order.status }}
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-divider></mat-divider>
+
+    <div class="order-content">
+      <div class="order-info">
+        <div class="order-info-detail">
+          <p><strong>User Info:</strong>
+          <div>Name: {{ order.personalInfo.name }}</div>
+          <div>Phone Number: {{ order.personalInfo.phone }}</div>
+        </div>
+
+        <div class="order-info-detail">
+          <p><strong>Shipping Info:</strong>
+          <div>country: {{ order.shippingInfo.country }}</div>
+          <div>city: {{ order.shippingInfo.city }}</div>
+          <div>state: {{ order.shippingInfo.state }}</div>
+          <div>zip: {{ order.shippingInfo.zip }}</div>
+          <div>address: {{ order.shippingInfo.address }}</div>
+        </div>
+
+        <div class="order-info-detail">
+          <p><strong>Total Price:</strong> {{ order.totalPrice | currency: 'USD' }}</p>
+        </div>
+<!--        TODO: show address  -->
+      </div>
+
+      <mat-divider class="vertical-divider" orientation="vertical"></mat-divider>
+
+      <div class="items-summary">
+        <div class="item" *ngFor="let item of order.products; let i = index">
+          <img class="item-img" [src]="item.product.image" alt="{{ item.product.name }}" />
+          <div class="item-details">
+            <div class="item-details-left">
+              <p>{{ item.product.name }}</p>
+              <div class="item-details-left-bottom">
+                <p class="item-details-left-bottom-amount">Amount:{{ item.quantity }}</p>
+                <p>Size:{{ item.size }}</p>
+              </div>
+            </div>
+
+            <div class="item-details-right">
+              <p>{{ item.product.price | currency }}</p>
+              <button class="refund-btn" *ngIf="item.status !== 'approved' && item.status !== 'refused'"
+                      (click)="requestRefund(order, item)" mat-raised-button color="primary">
+                {{ item.status === 'processing' ? 'Processing' : 'Refund' }}
+              </button>
+              <button class="refund-btn" *ngIf="item.status === 'approved'" disabled mat-raised-button color="primary">Refunded</button>
+              <button class="refund-btn" *ngIf="item.status === 'refused'" disabled mat-raised-button color="warn">Refused</button>
+              <button class="comment-btn" mat-raised-button color="primary" (click)="addComment(item)">Rating</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>
+
+
+<!--              <button class="refund-btn" [disabled]="item.status === 'processing' || item.status === 'refunded' || item.status === 'refused'"-->
+<!--                      (click)="requestRefund(order, item)" mat-raised-button color="primary">-->
+<!--                <ng-container [ngSwitch]="item.status">-->
+<!--                  <span *ngSwitchCase="'processing'">Processing</span>-->
+<!--                  <span *ngSwitchDefault>Refund</span>-->
+<!--                </ng-container>-->
+<!--              </button>-->

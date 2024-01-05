@@ -1,0 +1,55 @@
+<div class="jersey-detail" *ngIf="jersey">
+  <div class="product-detail-container">
+    <div class="jd-left">
+      <img src="{{jersey.image}}" class="jersey-detail-image">
+    </div>
+    <div class="jd-right">
+      <div class="jd-name">{{jersey.name}}</div>
+      <div class="jd-id">SKU: {{jersey.id}}</div>
+      <div class="jd-brand">Vendors: {{jersey.brand}}</div>
+      <div class="jd-price">${{jersey.price}}</div>
+      <div class="jd-price-bottom"></div>
+      <div class="jd-size">
+        <div class="size-display">Size: {{selectedSize}}</div>
+        <div class="size-option-container">
+          <div class="size-option" *ngFor="let size of sizes" (click)="selectSize(size)" [ngClass]="{ selected: selectedSize === size }">
+            {{size}}
+          </div>
+        </div>
+        <button mat-button (click)="openSizeGuide()" class="size-guide">Size Guide</button>
+        <div class="quantity-container">
+          <h4>Quantity Selector</h4>
+          <div class="quantity-selector">
+            <input [(ngModel)]="quantity" min="1" />
+            <button class="btn1" (click)="decreaseQuantity(jersey.id)">-</button>
+            <button class="btn2" (click)="increaseQuantity(jersey.id)">+</button>
+          </div>
+        </div>
+        <div class="jd-cart-button-container">
+          <button class="btn btn-warning" [disabled]="!selectedSize" (click)="addToCart(jersey.id, quantity)" routerLink="/api/cart">ADD TO CART</button>
+        </div>
+        <div class="add-wishlist-container" (click)="toggleWishlist(jersey)">
+          <div class="material-icons">{{ productsInWishlist[jersey.id] ? 'favorite' : 'favorite_border'}}</div>
+          <div class="add-wishlist">{{ productsInWishlist[jersey.id] ? 'ADDED TO WISHLIST' : 'ADD TO WISHLIST'}}</div>
+        </div>
+        <app-star-rating [(rate)]="rating" [readonly]="true"></app-star-rating>
+      </div>
+    </div>
+  </div>
+
+  <mat-accordion>
+    <mat-expansion-panel class="comment">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Comments
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>
+        <app-comment [comments]="comments" [readonly]="true"></app-comment>
+      </p>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+</div>
+
+

@@ -1,0 +1,57 @@
+<div class="main-container">
+  <div class="jersey-filter-container">
+    <p>Price</p>
+    <ng5-slider class="price-filter" [(value)]="minValue" [(highValue)]="maxValue" [options]="sliderOptions" (userChangeEnd)="onSliderChange()"></ng5-slider>
+    <app-jersey-filter (filterChangeEmitter)="onFilterChange($event)"></app-jersey-filter>
+  </div>
+
+  <div class="jersey-filter-right">
+    <div class="jersey-list">
+      <mat-card *ngFor="let jersey of pagedJerseys" class="jersey">
+        <a *ngIf="jersey" [routerLink]="['/api/products/jersey-detail', jersey.id]">
+          <img [src]="jersey.image" alt="{{ jersey.name }}" class="jersey-image">
+        </a>
+        <mat-card-content>
+          <a *ngIf="jersey" [routerLink]="['/api/products/jersey-detail', jersey.id]">
+            <h3>{{ jersey.name }}</h3>
+          </a>
+          <p>{{ jersey.brand }}</p>
+          <p>$ {{ jersey.price }}</p>
+          <div class="jd-cart-button-container">
+            <!--                  (click)="addToCart(jersey.id, 1)"-->
+            <button class="btn add-btn" [routerLink]="['/api/products/jersey-detail', jersey.id]">SELECT OPTIONS</button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="paginator-container">
+      <mat-paginator
+        class="paginator"
+        [length]="totalProducts"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="pageSizeOptions"
+        (page)="onPageChange($event)"
+      ></mat-paginator>
+    </div>
+  </div>
+
+</div>
+
+
+<!--        <ng-container *ngIf="showSelectOptions">-->
+<!--          <div class="select-options" *ngIf="showSelectOptions && !showSizeSelector">-->
+<!--            <button mat-button (click)="onSelectOptionClick()">Select Options</button>-->
+<!--          </div>-->
+
+<!--          <div class="size-selector" *ngIf="showSizeSelector">-->
+<!--            <mat-form-field>-->
+<!--              <mat-label>Select Size</mat-label>-->
+<!--              <mat-select [(value)]="selectedSize">-->
+<!--                <mat-option *ngFor="let size of jersey.size" [value]="size">{{size}}</mat-option>-->
+<!--              </mat-select>-->
+<!--            </mat-form-field>-->
+<!--            <button mat-button color="primary" [disabled]="!selectedSize" (click)="addToCart(jersey.id, 1)">Add to Cart</button>-->
+<!--          </div>-->
+<!--        </ng-container>-->
+

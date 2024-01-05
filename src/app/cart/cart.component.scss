@@ -1,0 +1,143 @@
+h1 {
+  margin-top: 5vh;
+}
+
+.cart-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.cart-items-container {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  width: 40vw;
+  margin-left: 20vw;
+  margin-right: 5vw;
+  //border-top: 1px #9b9b9b;
+  //border-bottom: 1px #9b9b9b;
+}
+
+
+.cart-item-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px);
+}
+
+.cart-item-card {
+  display: flex;
+  flex-direction: row;
+}
+
+.delete {
+  margin-top: 2vw;
+}
+
+.card-left {
+  display: flex;
+  flex-direction: column;
+  width: 60px;
+  height: 60px;
+  margin: 1vw;
+  .card-title {
+    width: 30vw;
+  }
+}
+
+.card-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-right-up {
+  display: flex;
+  flex-direction: row;
+}
+
+.price {
+  display: inline;
+  align-items: flex-start;
+  width: 6vw;
+  text-align: left;
+  margin-right: 2vw;
+}
+.size {
+  display: inline;
+  width: 6vw;
+  text-align: left;
+  margin-right: 2vw;
+}
+
+.quantity-selector {
+  display: inline;
+  width: 12vw;
+  input {
+    width: 8vw;
+  }
+}
+
+.card-right-bottom {
+  display: flex;
+  flex-direction: row;
+  margin-top: -1vw;
+  margin-left: 0.5vw;
+  //justify-content: space-between;
+}
+
+.card-right-bottom-content {
+  display: flex;
+  flex-direction: row;
+}
+
+
+.paginator {
+  display: flex;
+  justify-content: center;
+  vertical-align: text-bottom;
+  position: relative;
+  margin-top: 5vh;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+
+
+.summary {
+  width: 20vw;
+  margin-top: 19vh;
+  padding: 16px;
+  //box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  mat-card-title {
+    font-size: 4vh;
+    font-weight: bold;
+    margin-bottom: 1vw;
+    text-align: center;
+  }
+
+  mat-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .pricing,
+  .shipping,
+  .total {
+    margin-bottom: 8px;
+    font-size: 3vh;
+  }
+
+  .checkout {
+    margin-top: 20vh;
+  }
+}
+
+
+
+
+

@@ -1,0 +1,70 @@
+.wishlist-dialog {
+  width: 70vw;
+  height: 70vh;
+  h1 {
+    display: inline-block;
+    margin-left: 32vw;
+  }
+}
+
+.remove-all-container {
+  cursor: pointer;
+  display: inline-block;
+  margin-left: 15vw;
+  vertical-align: center;
+}
+
+.remove-all {
+  margin-top: -1vh;
+  display: inline-block;
+  font-size: 2vh;
+  vertical-align: 30%;
+}
+.delete {
+  margin-top: 2vh;
+  margin-right: 1vh;
+}
+
+.close {
+  margin-top: 3vh;
+  margin-left: 66vw;
+  display: inline-block;
+}
+
+.remove-item {
+  cursor: pointer;
+}
+
+
+wishlist-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 5vh;
+  margin-left: 5vw;
+}
+
+.price {
+  margin-top: 2vh;
+}
+
+.product {
+  width: 10vw;
+  margin-left: 5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+mat-card-content {
+  padding: 16px;
+}
+
+a {
+  text-decoration: none;
+}

@@ -1,0 +1,49 @@
+<div class="cart-container">
+  <div class="cart-items-container">
+    <h1>Shopping Cart</h1>
+    <h3>You have {{paginatedItems.length}} items in your shopping cart.</h3>
+    <mat-card *ngFor="let item of paginatedItems" class="cart-item-card">
+      <button class="delete" mat-icon-button color="warn" (click)="removeItem(item.id, item.size)">
+        <mat-icon >delete</mat-icon>
+      </button>
+      <div mat-card-avatar class="item-avatar card-left">
+        <img [src]="item.image" alt="{{item.name}}" width="80" height="80">
+      </div>
+      <div class="card-right">
+        <div class="card-right-up">
+          <mat-card-header>
+            <mat-card-actions>
+                <mat-card-title class="card-title">{{item.name}}</mat-card-title>
+            </mat-card-actions>
+          </mat-card-header>
+        </div>
+        <div class="card-right-bottom">
+          <mat-card-content>
+            <div class="card-right-bottom-content">
+              <p class="price">Price: ${{item.price}}</p>
+              <p class="size">Size: {{item.size}}</p>
+              <!--        TODO: quantity bug-->
+              <div class="quantity-selector">
+                <input [(ngModel)]="item.quantity" min="1" />
+                <button class="btn1" (click)="decreaseQuantity(item.id, item.size)">-</button>
+                <button class="btn2" (click)="increaseQuantity(item.id, item.size)">+</button>
+              </div>
+            </div>
+          </mat-card-content>
+        </div>
+      </div>
+    </mat-card>
+    <mat-paginator class="paginator" [length]="cartItems.length" [pageSize]="itemsPerPage" [pageSizeOptions]="[5, 10, 25]"></mat-paginator>
+  </div>
+
+  <mat-card class="summary">
+    <mat-card-title>Summary</mat-card-title>
+    <mat-card-content>
+      <div class="pricing">Cart: {{ getTotalPrice().toFixed(2) }} $</div>
+      <div class="shipping">Shipping: {{ (getTotalPrice() === 0) ? '0.00' : '10.00' }} $</div>
+      <div class="total">Total: {{ (getTotalPrice() + ((getTotalPrice() === 0) ? 0 : 10)).toFixed(2) }} $</div>
+      <button class="btn btn-warning checkout" [disabled]="getTotalPrice() === 0" (click)="onCheckoutClick()">CHECK OUT</button>
+    </mat-card-content>
+  </mat-card>
+</div>
+

@@ -1,0 +1,70 @@
+<div class="container">
+  <h2>Add Cleat</h2>
+  <form [formGroup]="cleatAddForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" placeholder="Enter your name" formControlName="name" [ngClass]="{'is-invalid': cleatAddForm.controls['name'].invalid && (cleatAddForm.controls['name'].dirty || cleatAddForm.controls['name'].touched)}">
+      <div class="invalid-feedback" *ngIf="cleatAddForm.get('name')?.getError('required') && (cleatAddForm.controls['name'].dirty || cleatAddForm.controls['name'].touched)">
+        Name is required.
+      </div>
+
+      <label for="color">Color</label>
+      <input type="text" class="form-control" id="color" placeholder="Enter your color" formControlName="color" [ngClass]="{'is-invalid': cleatAddForm.controls['color'].invalid && (cleatAddForm.controls['color'].dirty || cleatAddForm.controls['color'].touched)}">
+      <div class="invalid-feedback" *ngIf="cleatAddForm.get('color')?.getError('required') && (cleatAddForm.controls['color'].dirty || cleatAddForm.controls['color'].touched)">
+        Color is required.
+      </div>
+
+
+      <label for="price">Price</label>
+      <input type="text" class="form-control" id="price" placeholder="Enter your price" formControlName="price" [ngClass]="{'is-invalid': cleatAddForm.controls['price'].invalid && (cleatAddForm.controls['price'].dirty || cleatAddForm.controls['price'].touched)}">
+      <div class="invalid-feedback" *ngIf="cleatAddForm.get('price')?.getError('required') && (cleatAddForm.controls['price'].dirty || cleatAddForm.controls['price'].touched)">
+        Price is required.
+      </div>
+
+
+      <mat-form-field appearance="fill">
+        <mat-label>Brand</mat-label>
+        <mat-select formControlName="brand">
+          <mat-option [value]="'Adidas'">Adidas</mat-option>
+          <mat-option [value]="'Puma'">Puma</mat-option>
+          <mat-option [value]="'Nike'">Nike</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Category</mat-label>
+        <mat-select formControlName="category">
+          <mat-option [value]="'AG'">AG</mat-option>
+          <mat-option [value]="'FG'">FG</mat-option>
+          <mat-option [value]="'TF'">TF</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Gender</mat-label>
+        <mat-select formControlName="gender">
+          <mat-option [value]="'Male'">Male</mat-option>
+          <mat-option [value]="'Female'">Female</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Age</mat-label>
+        <mat-select formControlName="age">
+          <mat-option [value]="'Adult'">Adult</mat-option>
+          <mat-option [value]="'Youth'">Youth</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <label for="image">Image</label>
+      <input type="text" class="form-control" id="image" placeholder="Enter image URL" formControlName="image" [ngClass]="{'is-invalid': cleatAddForm.controls['image'].invalid && (cleatAddForm.controls['image'].dirty || cleatAddForm.controls['image'].touched)}">
+      <div class="invalid-feedback" *ngIf="cleatAddForm.get('image')?.getError('required') && (cleatAddForm.controls['image'].dirty || cleatAddForm.controls['image'].touched)">
+        Image Link is required.
+      </div>
+
+      <div class="button-container">
+        <button class="submit-btn" type="submit" class="btn btn-primary" [disabled]="cleatAddForm.invalid">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>

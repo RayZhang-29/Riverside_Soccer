@@ -1,0 +1,113 @@
+.cleat-list {
+  font-family: Arial, sans-serif;
+  border-collapse: separate;
+  border-spacing: 1em 0;
+  margin-bottom: 1em;
+  max-width: 70vw;
+}
+
+.cleat-list th,
+.cleat-list td {
+  padding: 0.5em 1em;
+  text-align: left;
+}
+
+.cleat-list th {
+  background-color: #f2f2f2;
+  color: #333;
+  font-weight: bold;
+  border-bottom: 2px solid #ccc;
+}
+
+.cleat-list tr:hover {
+  background-color: #f9f9f9;
+}
+
+.cleat-list th:nth-child(2),
+.cleat-list td:nth-child(2) {
+  max-width: 35vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cleat-list th:nth-child(4),
+.cleat-list td:nth-child(4) {
+  max-width: 20vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+
+
+.jersey-list {
+  font-family: Arial, sans-serif;
+  border-collapse: separate;
+  border-spacing: 1em 0;
+  margin-bottom: 1em;
+  max-width: 70vw;
+}
+
+.jersey-list th,
+.jersey-list td {
+  padding: 0.5em 1em;
+  text-align: left;
+}
+
+.jersey-list th {
+  background-color: #f2f2f2;
+  color: #333;
+  font-weight: bold;
+  border-bottom: 2px solid #ccc;
+}
+
+.jersey-list tr:hover {
+  background-color: #f9f9f9;
+}
+
+.jersey-list th:nth-child(2),
+.jersey-list td:nth-child(2) {
+  max-width: 30vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.jersey-list th:nth-child(4),
+.jersey-list td:nth-child(4) {
+  max-width: 15vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.add-btn {
+  width: 70vw;
+  height: 8vh;
+  text-align: center;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 3vh;
+  letter-spacing: 0.1rem;
+}
+
+button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 5px 10px;
+  letter-spacing: 0.1rem;
+}
+
+button:hover {
+  background-color: #45a049;
+}

@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="confirm-left">
+    <div class="shipping-info">
+      <div>
+        <h2>Shipping Information</h2>
+        <div *ngIf="personalInfo && shippingInfo">
+          <p><strong>Name:</strong> {{ personalInfo.name }}</p>
+          <p><strong>Phone Number:</strong> {{ personalInfo.phoneNumber }}</p>
+          <p><strong>Country:</strong> {{ shippingInfo.country }}</p>
+          <p><strong>City:</strong> {{ shippingInfo.city }}</p>
+          <p><strong>State:</strong> {{ shippingInfo.state }}</p>
+          <p><strong>Zip Code:</strong> {{ shippingInfo.zip }}</p>
+          <p><strong>Address:</strong> {{ shippingInfo.address }}</p>
+        </div>
+      </div>
+      <button routerLink="/api/checkout/personal-info" class="edit">Edit</button>
+    </div>
+
+    <div class="payment-info">
+      <div>
+        <h2>Payment Information</h2>
+        <div *ngIf="paymentInfo">
+          <p><strong>Card Number:</strong> {{ paymentInfo.cardNumber}} </p>
+          <p><strong>Card Owner:</strong> {{ paymentInfo.cardOwner }} </p>
+          <p><strong>Expiry Month:</strong> {{ paymentInfo.expiryMonth }} </p>
+          <p><strong>Expiry Year:</strong> {{ paymentInfo.expiryYear }} </p>
+          <p><strong>CCV:</strong> {{ paymentInfo.CCV }} </p>
+        </div>
+      </div>
+      <button routerLink="/api/checkout/payment" class="edit">Edit</button>
+    </div>
+  </div>
+
+  <div class="confirm-right">
+    <div class="items-summary">
+      <mat-card>
+        <div class="item" *ngFor="let item of cartItems">
+          <img class="item-img" [src]="item.image" alt="{{ item.name }}" />
+          <div class="item-details">
+            <div class="item-details-up">
+              <p>{{ item.name }}</p>
+            </div>
+            <div class="item-detail-bottom">
+              <p class="item-amount">Amount:{{ item.quantity }}</p>
+              <p class="item-size">Size: {{item.size}}</p>
+              <p class="item-price">Price: ${{item.price}} </p>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+    <div class="items-total">Total(include shipping): ${{ (getTotalPrice() + ((getTotalPrice() === 0) ? 0 : 10)).toFixed(2) }} </div>
+    <div class="purchase">
+      <div class="form-check mt-3">
+        <input type="checkbox" class="form-check-input" id="termsOfService" [(ngModel)]="termsAccepted">
+        <label class="form-check-label" for="termsOfService">
+          I have read and confirm the
+          <a href="#" (click)="openTermsDialog($event)">Terms of Service</a>
+        </label>
+      </div>
+      <button class="btn btn-primary mt-2 btn-back" (click)="onBack()">Back</button>
+      <button class="btn btn-primary mt-2 btn-purchase" [disabled]="!termsAccepted" (click)="onPurchase()">Purchase</button>
+    </div>
+  </div>
+
+</div>
